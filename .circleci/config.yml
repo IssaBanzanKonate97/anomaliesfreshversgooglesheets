@@ -1,0 +1,14 @@
+version: 2.1
+executors:
+  default:
+    machine: true
+
+jobs:
+  build:
+    executor: default
+    steps:
+      - run:
+          name: Déploiement au serveur
+          command: |
+            ssh debian@85.31.239.109 "cd inscritssellsyversbitrix24etsendpulse && git pull origin"
+            ssh debian@85.31.239.109 "cd inscritssellsyversbitrix24etsendpulse && sudo docker run -d anomaly-image"
